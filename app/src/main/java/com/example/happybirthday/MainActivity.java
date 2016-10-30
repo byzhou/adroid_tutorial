@@ -2,15 +2,11 @@ package com.example.happybirthday;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.text.NumberFormat;
 
 /**
  * This app displays an order form to order coffee.
@@ -60,25 +56,22 @@ public class MainActivity extends ActionBarActivity {
     private void displayName(){
         TextView displayNameView = (TextView) findViewById(R.id.name_view);
         CheckBox checkBox = (CheckBox) findViewById(R.id.topppings_view);
-        if (checkBox.isChecked()) {
-            toppingsAdded = true;
-        } else {
-            toppingsAdded = false;
-        }
+        toppingsAdded = checkBox.isChecked();
 
         String outputMessage = "";
         if (toppingsAdded) {
             outputMessage.concat("Name:");
             outputMessage.concat(" ");
-            outputMessage.concat(username);
+            //outputMessage.concat(username);
             outputMessage.concat(" ");
             outputMessage.concat("Toppings added");
-            displayNameView.setText(outputMessage);
+            displayNameView.setText("Name: " + username);
+            Log.v("happybirthdayactivity", "username should be printed");
         } else {
-            outputMessage.concat("Name:");
+            outputMessage.concat("Name: Test");
             outputMessage.concat(" ");
-            outputMessage.concat(username);
-            displayNameView.setText(outputMessage);
+            //outputMessage.concat(username);
+            displayNameView.setText("Name: " + username);
         }
 
     }
@@ -94,10 +87,14 @@ public class MainActivity extends ActionBarActivity {
      * @param view is the view that we are going to work on
      */
     public void submitOrder(View view) {
-
-        display(numberOfCoffees);
         EditText editText = (EditText) findViewById(R.id.edit_name_view);
         username = editText.getText().toString();
+        display(numberOfCoffees);
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse("geo:47.6, -122.3"));
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        }
     }
 
     /*

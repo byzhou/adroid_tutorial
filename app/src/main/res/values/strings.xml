@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="master_user_name">User name</string>
+    <string-array name="user_names">
+        <item>Boyou Zhou</item>
+        <item>Zafar Takhirov</item>
+        <item>Tiansheng Zhang</item>
+    </string-array>
 </resources>
